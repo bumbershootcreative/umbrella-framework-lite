@@ -1,0 +1,29 @@
+name: Deploy to WP Engine
+on:
+  push:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: GitHub Action Deploy to WP Engine
+        uses: wpengine/github-action-wpe-site-deploy@v2.3.5
+        with:
+          # Deploy vars
+          #   WPE_SSHG_KEY_PRIVATE: ${{ secrets.WPE_SSHG_KEY_PRIVATE }}
+          #   PHP_LINT: TRUE
+          #   FLAGS: -azvr --inplace --delete --exclude=".*" --exclude-from=.deployignore
+          #   CACHE_CLEAR: TRUE
+          #   TPO_SRC_PATH: "wp-content/themes/genesis-child-theme/"
+          #   TPO_PATH: "wp-content/themes/genesis-child-theme/"
+
+          # Branches & Environments
+          PRD_BRANCH: main
+          PRD_ENV: prodsitehere
+
+          STG_BRANCH: feature/stage
+          STG_ENV: stagesitehere
+
+          DEV_BRANCH: feature/dev
+          DEV_ENV: devsitehere
